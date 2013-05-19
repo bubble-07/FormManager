@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QSignalMapper>
 #include <QAction>
 #include <QVBoxLayout>
 #include <QTableView>
@@ -7,17 +8,14 @@
 #include <QMenuBar>
 #include <vector>
 #include "mymodel.h"
+#include "mainTable.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QTableView tableView;
     QFile* tmpformatFile = new QFile("c://formatTest.csv");
     tmpformatFile->open(QIODevice::ReadOnly);
     CsvReader* formatFile = new CsvReader(tmpformatFile);
-
-    MyModel myModel(0, formatFile);
-    tableView.setModel(&myModel);
 
     QToolBar* mainToolBar = new QToolBar();
     mainToolBar->setMovable(true);
@@ -37,22 +35,31 @@ int main(int argc, char *argv[])
     QMenuBar menu;
     QMenu selector(QString("Show/Hide"));
     std::vector<QAction*> options;
-    //options.push_back(selector.addAction(QString("Meh")));
-    //options[0]->setCheckable(true);
+
+    QSignalMapper* signalMapper = new QSignalMapper(0);
 
     int menusize = formatFile->getNumRows();
     for (int i = 0; i < menusize; i++) {
         options.push_back(selector.addAction(formatFile->get(i, 0)));
         options[i]->setCheckable(true);
         options[i]->setChecked(true);
+        signalMapper->setMapping(options[i], i);
+        QObject::connect(options[i], SIGNAL(toggled(bool)), signalMapper, SLOT(map()));
     }
 
     menu.addMenu(&selector);
     mainToolBar->addWidget(&menu);
 
+
+    MyModel myModel(0, formatFile);
+    MainTable table(0, &myModel);
+
+
+    QObject::connect(signalMapper, SIGNAL(mapped(int)), &table, SLOT(toggleHidden(int)));
+
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(mainToolBar);
-    layout->addWidget(&tableView);
+    layout->addWidget(&table);
 
 
     QWidget* window = new QWidget();

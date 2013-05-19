@@ -1,4 +1,8 @@
 #include <QFile>
+
+#ifndef CSVREADER_DEFINED
+#define CSVREADER_DEFINED
+
 class CsvReader
 {
     public:
@@ -9,3 +13,5 @@ class CsvReader
     private:
     QFile* mainFile;
 };
+
+#endif

@@ -3,6 +3,9 @@
 #include <QFile>
 #include "csvfile.h"
 
+#ifndef MYMODEL_DEFINED
+#define MYMODEL_DEFINED
+
 class MyModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -19,3 +22,5 @@ class MyModel : public QAbstractTableModel
     int rColCount;
     CsvReader* formatFile;
 };
+
+#endif
