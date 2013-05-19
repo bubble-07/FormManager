@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>583</width>
+    <height>368</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Our Neighbor's Place Form Manager</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionPeople"/>
+   <addaction name="actionForms"/>
+   <addaction name="actionBack"/>
+   <addaction name="actionForward"/>
+   <addaction name="actionSave"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>583</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuOur_Neighbor_s_Place_Form_Manager">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionPreferences"/>
+    <addaction name="actionSave"/>
+   </widget>
+   <addaction name="menuOur_Neighbor_s_Place_Form_Manager"/>
+  </widget>
+  <action name="actionPreferences">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/page_white_gear.png</normaloff>icons/page_white_gear.png</iconset>
+   </property>
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/table_save.png</normaloff>icons/table_save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionBack">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/arrow_left.png</normaloff>icons/arrow_left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="toolTip">
+    <string>Go Back</string>
+   </property>
+  </action>
+  <action name="actionForward">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/new/iconfiles/icons/arrow_right.png</normaloff>:/new/iconfiles/icons/arrow_right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Forward</string>
+   </property>
+   <property name="toolTip">
+    <string>Go Forward</string>
+   </property>
+  </action>
+  <action name="actionPeople">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/new/iconfiles/icons/user.png</normaloff>:/new/iconfiles/icons/user.png</iconset>
+   </property>
+   <property name="text">
+    <string>People</string>
+   </property>
+   <property name="toolTip">
+    <string>View By People</string>
+   </property>
+  </action>
+  <action name="actionForms">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/new/iconfiles/icons/application_side_list.png</normaloff>:/new/iconfiles/icons/application_side_list.png</iconset>
+   </property>
+   <property name="text">
+    <string>Forms</string>
+   </property>
+   <property name="toolTip">
+    <string>View By Forms</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
