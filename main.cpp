@@ -2,6 +2,7 @@
 #include <QVBoxLayout>
 #include <QTableView>
 #include <QToolBar>
+#include <QMenu>
 #include "mymodel.h"
 
 int main(int argc, char *argv[])
@@ -26,6 +27,9 @@ int main(int argc, char *argv[])
     const QIcon saveicon(":/icons/database_save");
     mainToolBar->addAction(saveicon, QString("Save"));
 
+    QMenu selector(QString("Main"));
+    selector.addAction(QString("Meh"));
+    mainToolBar->addWidget(&selector);
 
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(mainToolBar);
