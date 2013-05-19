@@ -5,7 +5,7 @@ MyModel::MyModel(QObject *parent, QFile* fFile)
 {
    this->formatFile = fFile;
    this->formatFile->open(QIODevice::ReadOnly | QIODevice::Text);
-   this->rRowCount = 2;
+   this->rRowCount = 3;
    this->rColCount = 2;
    return;
 }
@@ -28,8 +28,21 @@ QVariant MyModel::data(const QModelIndex &index, int role) const
                 .arg(index.column() + 1); */
         CsvReader tmp = CsvReader(formatFile);
         return tmp.get(index.row(), index.column());
+        //return QString("Num%1").arg(tmp.getNumRows());
 
     }
     return QVariant();
 }
+QVariant MyModel::headerData(int s, Qt::Orientation o, int role) const {
+    if (role == Qt::DisplayRole) {
+        if (o==Qt::Horizontal) {
+            CsvReader tmp = CsvReader(formatFile);
+            return tmp.get(s, 0);
+        }
+    }
+    return QVariant();
+}
+
+
+
 
