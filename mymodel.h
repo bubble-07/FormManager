@@ -8,7 +8,7 @@ class MyModel : public QAbstractTableModel
     Q_OBJECT
 
     public:
-    MyModel(QObject *parent, QFile* fFile);
+    MyModel(QObject *parent, CsvReader* in);
     int rowCount(const QModelIndex &parent = QModelIndex()) const ;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
@@ -17,5 +17,5 @@ class MyModel : public QAbstractTableModel
     private:
     int rRowCount;
     int rColCount;
-    QFile* formatFile;
+    CsvReader* formatFile;
 };

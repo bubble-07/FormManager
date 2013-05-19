@@ -1,15 +1,22 @@
 #include <QApplication>
+#include <QAction>
 #include <QVBoxLayout>
 #include <QTableView>
 #include <QToolBar>
 #include <QMenu>
+#include <QMenuBar>
+#include <vector>
 #include "mymodel.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QTableView tableView;
-    MyModel myModel(0, new QFile("c://formatTest.csv"));
+    QFile* tmpformatFile = new QFile("c://formatTest.csv");
+    tmpformatFile->open(QIODevice::ReadOnly);
+    CsvReader* formatFile = new CsvReader(tmpformatFile);
+
+    MyModel myModel(0, formatFile);
     tableView.setModel(&myModel);
 
     QToolBar* mainToolBar = new QToolBar();
@@ -27,9 +34,21 @@ int main(int argc, char *argv[])
     const QIcon saveicon(":/icons/database_save");
     mainToolBar->addAction(saveicon, QString("Save"));
 
-    QMenu selector(QString("Main"));
-    selector.addAction(QString("Meh"));
-    mainToolBar->addWidget(&selector);
+    QMenuBar menu;
+    QMenu selector(QString("Show/Hide"));
+    std::vector<QAction*> options;
+    //options.push_back(selector.addAction(QString("Meh")));
+    //options[0]->setCheckable(true);
+
+    int menusize = formatFile->getNumRows();
+    for (int i = 0; i < menusize; i++) {
+        options.push_back(selector.addAction(formatFile->get(i, 0)));
+        options[i]->setCheckable(true);
+        options[i]->setChecked(true);
+    }
+
+    menu.addMenu(&selector);
+    mainToolBar->addWidget(&menu);
 
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(mainToolBar);

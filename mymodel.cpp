@@ -1,12 +1,11 @@
 #include "mymodel.h"
 
-MyModel::MyModel(QObject *parent, QFile* fFile)
+MyModel::MyModel(QObject *parent, CsvReader* in)
     :QAbstractTableModel(parent)
 {
-   this->formatFile = fFile;
-   this->formatFile->open(QIODevice::ReadOnly | QIODevice::Text);
+   this->formatFile = in;
    this->rRowCount = 2;
-   this->rColCount = CsvReader(this->formatFile).getNumRows();
+   this->rColCount = this->formatFile->getNumRows();
    return;
 }
 
@@ -36,8 +35,7 @@ QVariant MyModel::data(const QModelIndex &index, int role) const
 QVariant MyModel::headerData(int s, Qt::Orientation o, int role) const {
     if (role == Qt::DisplayRole) {
         if (o==Qt::Horizontal) {
-            CsvReader tmp = CsvReader(formatFile);
-            return tmp.get(s, 0);
+            return formatFile->get(s, 0);
         }
         else {
             return QString("%1").arg(s+ 1);
