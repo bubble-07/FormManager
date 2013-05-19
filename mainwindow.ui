@@ -69,8 +69,8 @@
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/table_save.png</normaloff>icons/table_save.png</iconset>
+    <iconset resource="Icons.qrc">
+     <normaloff>:/new/iconfiles/icons/table_save.png</normaloff>:/new/iconfiles/icons/table_save.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -78,8 +78,8 @@
   </action>
   <action name="actionBack">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/arrow_left.png</normaloff>icons/arrow_left.png</iconset>
+    <iconset resource="Icons.qrc">
+     <normaloff>:/new/iconfiles/icons/arrow_left.png</normaloff>:/new/iconfiles/icons/arrow_left.png</iconset>
    </property>
    <property name="text">
     <string>Back</string>
