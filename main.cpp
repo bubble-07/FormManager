@@ -9,6 +9,7 @@
 #include <vector>
 #include "mymodel.h"
 #include "mainTable.h"
+#include "visibilityMenu.h"
 
 int main(int argc, char *argv[])
 {
@@ -32,10 +33,14 @@ int main(int argc, char *argv[])
     const QIcon saveicon(":/icons/database_save");
     mainToolBar->addAction(saveicon, QString("Save"));
 
+    MyModel myModel(0, formatFile);
+    MainTable table(0, &myModel);
+
+
     QMenuBar menu;
     QMenu selector(QString("Show/Hide"));
     std::vector<QAction*> options;
-
+/*
     QSignalMapper* signalMapper = new QSignalMapper(0);
 
     int menusize = formatFile->getNumRows();
@@ -46,16 +51,13 @@ int main(int argc, char *argv[])
         signalMapper->setMapping(options[i], i);
         QObject::connect(options[i], SIGNAL(toggled(bool)), signalMapper, SLOT(map()));
     }
+*/
 
-    menu.addMenu(&selector);
+    VisibilityMenu* showhide = new VisibilityMenu(QString("show/hide"), formatFile, &table);
+
+    menu.addMenu(showhide);
     mainToolBar->addWidget(&menu);
 
-
-    MyModel myModel(0, formatFile);
-    MainTable table(0, &myModel);
-
-
-    QObject::connect(signalMapper, SIGNAL(mapped(int)), &table, SLOT(toggleHidden(int)));
 
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(mainToolBar);

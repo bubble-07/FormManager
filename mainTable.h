@@ -1,5 +1,9 @@
 #include <QTableView>
 #include "mymodel.h"
+
+#ifndef MAINTABLE_DEFINED
+#define MAINTABLE_DEFINED
+
 class MainTable : public QTableView
 {
     Q_OBJECT
@@ -11,6 +15,4 @@ class MainTable : public QTableView
     void toggleHidden(int col);
 };
 
-
-
-
+#endif

@@ -1,7 +1,7 @@
 #include "visibilityMenu.h"
 
 VisibilityMenu::VisibilityMenu(QString name, CsvReader* file, MainTable* table)
-    :QMenu(parent)
+    :QMenu(name)
 {
     this->formatFile = file;
     this->table = table;

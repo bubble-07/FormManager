@@ -15,12 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
     mymodel.cpp \
     csvfile.cpp \
-    mainTable.cpp
+    mainTable.cpp \
+    visibilityMenu.cpp
 
 HEADERS  += \
     mymodel.h \
     csvfile.h \
-    mainTable.h
+    mainTable.h \
+    visibilityMenu.h
 
 RESOURCES += \
     Icons.qrc
