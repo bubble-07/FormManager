@@ -10,6 +10,7 @@
 #include "mymodel.h"
 #include "mainTable.h"
 #include "visibilityMenu.h"
+#include "addDialog.h"
 
 int main(int argc, char *argv[])
 {
@@ -33,6 +34,9 @@ int main(int argc, char *argv[])
     const QIcon saveicon(":/icons/database_save");
     mainToolBar->addAction(saveicon, QString("Save"));
 
+    const QIcon addicon(":/icons/add");
+    mainToolBar->addAction(addicon, QString("Add"));
+
     MyModel myModel(0, formatFile);
     MainTable table(0, &myModel);
 
@@ -53,6 +57,9 @@ int main(int argc, char *argv[])
     QWidget* window = new QWidget();
     window->setLayout(layout);
     window->show();
+
+    AddDialog* dialog = new AddDialog();
+    dialog->exec();
     
     return a.exec();
 }

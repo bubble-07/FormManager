@@ -16,13 +16,15 @@ SOURCES += main.cpp\
     mymodel.cpp \
     csvfile.cpp \
     mainTable.cpp \
-    visibilityMenu.cpp
+    visibilityMenu.cpp \
+    addDialog.cpp
 
 HEADERS  += \
     mymodel.h \
     csvfile.h \
     mainTable.h \
-    visibilityMenu.h
+    visibilityMenu.h \
+    addDialog.h
 
 RESOURCES += \
     Icons.qrc
