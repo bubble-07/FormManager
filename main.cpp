@@ -38,22 +38,8 @@ int main(int argc, char *argv[])
 
 
     QMenuBar menu;
-    QMenu selector(QString("Show/Hide"));
-    std::vector<QAction*> options;
-/*
-    QSignalMapper* signalMapper = new QSignalMapper(0);
 
-    int menusize = formatFile->getNumRows();
-    for (int i = 0; i < menusize; i++) {
-        options.push_back(selector.addAction(formatFile->get(i, 0)));
-        options[i]->setCheckable(true);
-        options[i]->setChecked(true);
-        signalMapper->setMapping(options[i], i);
-        QObject::connect(options[i], SIGNAL(toggled(bool)), signalMapper, SLOT(map()));
-    }
-*/
-
-    VisibilityMenu* showhide = new VisibilityMenu(QString("show/hide"), formatFile, &table);
+    VisibilityMenu* showhide = new VisibilityMenu(QString("Show/Hide"), formatFile, &table);
 
     menu.addMenu(showhide);
     mainToolBar->addWidget(&menu);
