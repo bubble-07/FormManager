@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QAbstractTableModel>
 #include <QFile>
-#include "csvfile.h"
+#include "CsvReader.h"
 
 #ifndef MYMODEL_DEFINED
 #define MYMODEL_DEFINED

@@ -7,10 +7,12 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <vector>
+#include "CsvReader.h"
 #include "mymodel.h"
 #include "mainTable.h"
 #include "visibilityMenu.h"
 #include "addDialog.h"
+#include "EntryFields/NumberField.h"
 
 int main(int argc, char *argv[])
 {
@@ -53,13 +55,12 @@ int main(int argc, char *argv[])
     layout->addWidget(mainToolBar);
     layout->addWidget(&table);
 
-
     QWidget* window = new QWidget();
     window->setLayout(layout);
     window->show();
 
     AddDialog* dialog = new AddDialog();
-    dialog->exec();
+    dialog->show();
     
     return a.exec();
 }

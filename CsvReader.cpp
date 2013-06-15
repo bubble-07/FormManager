@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include "csvfile.h"
+#include "CsvReader.h"
 
 CsvReader::CsvReader(QFile* in) {
     mainFile = in;

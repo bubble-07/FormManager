@@ -14,17 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     mymodel.cpp \
-    csvfile.cpp \
     mainTable.cpp \
     visibilityMenu.cpp \
-    addDialog.cpp
+    addDialog.cpp \
+    EntryFields/NumberField.cpp \
+    CsvReader.cpp
 
 HEADERS  += \
     mymodel.h \
-    csvfile.h \
     mainTable.h \
     visibilityMenu.h \
-    addDialog.h
+    addDialog.h \
+    EntryFields/NumberField.h \
+    CsvReader.h
 
 RESOURCES += \
     Icons.qrc
