@@ -12,6 +12,8 @@ class CsvReader
     
     private:
     QFile* mainFile;
+    void loadFile();
+    std::vector<std::vector<std::string> > parsedFile;
 };
 
 #endif

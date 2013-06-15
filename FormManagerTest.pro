@@ -18,7 +18,9 @@ SOURCES += main.cpp\
     visibilityMenu.cpp \
     addDialog.cpp \
     EntryFields/NumberField.cpp \
-    CsvReader.cpp
+    CsvReader.cpp \
+    EntryFields/StringField.cpp \
+    EntryFields/BoolField.cpp
 
 HEADERS  += \
     mymodel.h \
@@ -26,7 +28,9 @@ HEADERS  += \
     visibilityMenu.h \
     addDialog.h \
     EntryFields/NumberField.h \
-    CsvReader.h
+    CsvReader.h \
+    EntryFields/StringField.h \
+    EntryFields/BoolField.h
 
 RESOURCES += \
     Icons.qrc
