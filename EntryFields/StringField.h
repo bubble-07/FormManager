@@ -1,5 +1,6 @@
 #include <QLineEdit>
 #include <QDoubleValidator>
+#include "AbstractField.h"
 
 #ifndef STRINGFIELD_DEFINED
 #define STRINGFIELD_DEFINED
@@ -11,8 +12,6 @@ class StringField : public QLineEdit
     public:
     StringField(QWidget * parent = 0);
     
-    private:
-    QValidator *validator;
 };
 
 #endif

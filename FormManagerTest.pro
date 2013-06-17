@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     EntryFields/NumberField.cpp \
     CsvReader.cpp \
     EntryFields/StringField.cpp \
-    EntryFields/BoolField.cpp
+    EntryFields/BoolField.cpp \
+    EntryFields/AbstractField.cpp \
+    EntryFields/AbstractEntry.cpp
 
 HEADERS  += \
     mymodel.h \
@@ -30,7 +32,9 @@ HEADERS  += \
     EntryFields/NumberField.h \
     CsvReader.h \
     EntryFields/StringField.h \
-    EntryFields/BoolField.h
+    EntryFields/BoolField.h \
+    EntryFields/AbstractField.h \
+    EntryFields/AbstractEntry.h
 
 RESOURCES += \
     Icons.qrc
