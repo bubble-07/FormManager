@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <QTextStream>
 #include "CsvReader.h"
 #define MAX_LINE_WIDTH 1048576
 
@@ -24,6 +25,9 @@ std::vector<std::string> split(const std::string &s, char delim) {
 QString CsvReader::get(int row, int column) {
     return QString(this->parsedFile[row][column].c_str());
 }
+void CsvReader::set(int row, int column, std::string val) {
+    this->parsedFile[row][column] = val;
+}
 
 void CsvReader::loadFile() {
     mainFile->reset();
@@ -37,6 +41,26 @@ void CsvReader::loadFile() {
     return;
 }
 
-int CsvReader::getNumRows() {
+void CsvReader::saveFile() {
+    mainFile->close();
+    mainFile->open(QFile::Truncate | QFile::Text);
+    QTextStream output(mainFile);
+
+    for (size_t i = 0; i < this->getNumRows(); i++) {
+        for (size_t j = 0; j < this->parsedFile[i].size(); j++) {
+
+            output << this->get(i, j);
+
+            if (j < (this->parsedFile[i].size() - 1)) {
+                output << ",";
+            }
+        }
+        output << endl;
+    }
+}
+    
+    
+
+size_t CsvReader::getNumRows() {
     return this->parsedFile.size();
 }

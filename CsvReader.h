@@ -8,7 +8,9 @@ class CsvReader
     public:
     CsvReader(QFile* in);
     QString get(int row, int column);
-    int getNumRows();
+    size_t getNumRows();
+    void saveFile();
+    void set(int row, int column, std::string val);
     
     private:
     QFile* mainFile;

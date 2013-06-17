@@ -1,6 +1,6 @@
 #include "StringField.h"
 
-StringField::StringField(QWidget *parent)
-    :QLineEdit(parent)
+StringField::StringField(const QString& contents, QWidget *parent)
+    :QLineEdit(contents, parent)
 {
 }

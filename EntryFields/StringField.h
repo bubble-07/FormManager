@@ -10,7 +10,7 @@ class StringField : public QLineEdit
     Q_OBJECT
 
     public:
-    StringField(QWidget * parent = 0);
+    StringField(const QString& contents, QWidget * parent = 0);
     
 };
 
