@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
     tmpformatFile->open(QIODevice::ReadOnly);
     CsvReader* formatFile = new CsvReader(tmpformatFile);
 
+    formatFile->saveFile();
+
     QToolBar* mainToolBar = new QToolBar();
     mainToolBar->setMovable(true);
     mainToolBar->setFloatable(true);

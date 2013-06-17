@@ -31,10 +31,9 @@ void CsvReader::set(int row, int column, std::string val) {
 
 void CsvReader::loadFile() {
     mainFile->reset();
-    for (; !mainFile->atEnd();) {
-        char buf[MAX_LINE_WIDTH];
-        mainFile->readLine(buf, sizeof(buf));
-        std::string line(buf);
+    QTextStream input(mainFile);
+    for (; !input.atEnd();) {
+        std::string line = input.readLine().toStdString();
         std::vector<std::string> parsed_line = split(line, ',');
         this->parsedFile.push_back(parsed_line);
     }
@@ -43,7 +42,7 @@ void CsvReader::loadFile() {
 
 void CsvReader::saveFile() {
     mainFile->close();
-    mainFile->open(QFile::Truncate | QFile::Text);
+    mainFile->open(QFile::Truncate | QFile::Text | QFile::WriteOnly);
     QTextStream output(mainFile);
 
     for (size_t i = 0; i < this->getNumRows(); i++) {
