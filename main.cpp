@@ -75,7 +75,8 @@ int main(int argc, char *argv[])
 
     CsvLoc dataLoc = CsvLoc(dataFile, 0, 0);
     AddDialog* dialog = new AddDialog(formatFile, &dataLoc);
-    dialog->show();
+    dialog->exec();
+    delete dialog;
     
     return a.exec();
 }

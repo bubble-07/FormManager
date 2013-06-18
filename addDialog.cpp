@@ -82,5 +82,4 @@ AddDialog::~AddDialog() {
     delete displayArea;
     delete scrollArea;
     delete windowLayout;
-    delete doneButton;
 }

@@ -50,6 +50,12 @@ QVariant MainTableModel::headerData(int s, Qt::Orientation o, int role) const {
     return QVariant();
 }
 
-
+void MainTableModel::editRow(const QModelIndex& index) {
+    CsvLoc dataLoc(this->dataFile, index.row(), 0);
+    AddDialog* dialog = new AddDialog(this->formatFile, &dataLoc);
+    dialog->exec();
+    delete dialog;
+    return;
+}
 
 

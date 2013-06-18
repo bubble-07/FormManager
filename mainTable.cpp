@@ -5,6 +5,8 @@ MainTable::MainTable(QWidget *parent, MainTableModel* model)
 {
     this->model = model;
     this->setModel(model);
+    QObject::connect(this, SIGNAL(doubleClicked(const QModelIndex&)), 
+                     this->model, SLOT(editRow(const QModelIndex&)));
     return;
 }
 

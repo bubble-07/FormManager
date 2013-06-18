@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QAbstractTableModel>
 #include <QFile>
+#include "addDialog.h"
 #include "CsvReader.h"
 
 #ifndef MAINTABLEMODEL_DEFINED
@@ -23,6 +24,9 @@ class MainTableModel : public QAbstractTableModel
     int rColCount;
     CsvReader* formatFile;
     CsvReader* dataFile;
+    
+    public slots:
+    void editRow(const QModelIndex& index);
 };
 
 #endif
