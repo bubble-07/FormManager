@@ -2,7 +2,7 @@
 
 AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
 {
-    this->layout = new QVBoxLayout;
+    this->viewLayout = new QVBoxLayout;
     
     CsvLoc* labelLoc = new CsvLoc(labelFile, 0, 0);
 
@@ -10,13 +10,20 @@ AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
 
         this->entries.push_back(new AbstractEntry(*labelLoc, *dataLoc));
 
-        this->layout->addWidget(this->entries[this->entries.size() - 1]);
+        this->viewLayout->addWidget(this->entries[this->entries.size()-1]);
 
         dataLoc->advance(0, 1);
         labelLoc->advance(1, 0);
     }
 
-    this->setLayout(this->layout);
+    this->displayArea = new QWidget();
+    this->displayArea->setLayout(this->viewLayout);
+    this->scrollArea = new QScrollArea;
+    scrollArea->setWidget(displayArea);
+    this->windowLayout = new QVBoxLayout;
+    this->windowLayout->addWidget(scrollArea);
+    this->setLayout(windowLayout);
+    
     this->setModal(true);
 
     return;

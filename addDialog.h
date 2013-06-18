@@ -1,5 +1,6 @@
 #include <QVBoxLayout>
 #include <QDialog>
+#include <QScrollArea>
 #include <vector>
 #include "CsvLoc.h"
 #include "EntryFields/NumberField.h"
@@ -17,8 +18,11 @@ class AddDialog : public QDialog
     AddDialog(CsvReader* labelFile, CsvLoc* dataLoc);
     
     private:
-    QVBoxLayout *layout;
+    QVBoxLayout *viewLayout;
     std::vector<AbstractEntry*> entries;
+    QWidget* displayArea;
+    QScrollArea* scrollArea;
+    QVBoxLayout *windowLayout;
 };
 
 
