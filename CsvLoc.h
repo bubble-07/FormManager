@@ -10,6 +10,7 @@ class CsvLoc {
     int row;
     int col;
     CsvLoc(CsvReader* reader, int row, int col);
+    CsvLoc();
     QString get();
     void set(QString val);
     void advance(int rows, int cols);

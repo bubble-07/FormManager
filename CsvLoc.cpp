@@ -1,5 +1,11 @@
 #include "CsvLoc.h"
 
+CsvLoc::CsvLoc() {
+    this->row = 0;
+    this->col = 0;
+    this->reader = NULL;
+}
+
 CsvLoc::CsvLoc(CsvReader* reader, int row, int col) {
     this->row = row;
     this->col = col;

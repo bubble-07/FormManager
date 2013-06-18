@@ -6,3 +6,6 @@ NumberField::NumberField(const QString& init, QWidget *parent)
     this->validator = new QDoubleValidator();
     this->setValidator(this->validator);
 }
+QString NumberField::get() {
+    return this->text();
+}

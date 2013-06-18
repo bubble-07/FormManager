@@ -18,12 +18,12 @@ class AbstractEntry : public QWidget
     Q_OBJECT
 
     public:
-    explicit AbstractEntry(QWidget *parent = 0);
-    AbstractEntry(StringField* test, QString* label, QWidget *parent = 0);
+    //explicit AbstractEntry(QWidget *parent = 0);
     AbstractEntry(CsvLoc label, CsvLoc data, QWidget *parent = 0);
     //AbstractEntry(BoolField* test, QString* label, QWidget *parent = 0);
     //AbstractEntry(NumberField* test, QString* label, QWidget *parent = 0);
     virtual ~AbstractEntry() {};
+    void save();
 
     private:
     StringField* optString;
@@ -40,6 +40,7 @@ class AbstractEntry : public QWidget
     QHBoxLayout *layout;
     QString displayString;
     QLabel* label;
+    CsvLoc dataLoc;
 
 };
 #endif

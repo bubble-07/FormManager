@@ -9,6 +9,7 @@ class BoolField : public QSpinBox
     Q_OBJECT
 
     public:
+    QString get();
     BoolField(const QString& init, QWidget * parent = 0);
     QString textFromValue(int in) const;
     int valueFromText(const QString & text) const;

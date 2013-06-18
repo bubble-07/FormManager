@@ -29,3 +29,7 @@ QString BoolField::textFromValue(int in) const {
 QValidator::State BoolField::validate(QString & text, int & pos) const {
     return QValidator::Acceptable;
 }
+
+QString BoolField::get() {
+    return this->textFromValue(this->value());
+}

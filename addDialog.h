@@ -1,5 +1,7 @@
 #include <QVBoxLayout>
+#include <QCloseEvent>
 #include <QDialog>
+#include <QPushButton>
 #include <QScrollArea>
 #include <vector>
 #include "CsvLoc.h"
@@ -23,6 +25,10 @@ class AddDialog : public QDialog
     QWidget* displayArea;
     QScrollArea* scrollArea;
     QVBoxLayout *windowLayout;
+    QPushButton *doneButton;
+
+    public slots:
+    void saveAllAndExit();
 };
 
 

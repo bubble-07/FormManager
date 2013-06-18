@@ -17,8 +17,14 @@ AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
         labelLoc->advance(1, 0);
     }
 
+    this->doneButton = new QPushButton("&Save");
+    this->viewLayout->addWidget(doneButton);
+    QObject::connect(doneButton, SIGNAL(released()), 
+                     this, SLOT(saveAllAndExit()));
+
     this->displayArea = new QWidget();
     this->displayArea->setLayout(this->viewLayout);
+
     this->scrollArea = new QScrollArea;
     scrollArea->setWidget(displayArea);
     this->windowLayout = new QVBoxLayout;
@@ -28,4 +34,11 @@ AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
     this->setModal(true);
 
     return;
+}
+void AddDialog::saveAllAndExit() {
+    for (size_t i = 0; i < this->entries.size(); i++) {
+        this->entries[i]->save();
+    }
+    /*ToDo: dealloc all entries and call destructor, proper*/
+    //this->closeEvent(new QCloseEvent());
 }
