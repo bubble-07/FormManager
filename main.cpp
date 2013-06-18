@@ -21,6 +21,11 @@ int main(int argc, char *argv[])
     tmpformatFile->open(QIODevice::ReadOnly);
     CsvReader* formatFile = new CsvReader(tmpformatFile);
 
+    QFile* tmpdataFile = new QFile("c://dataTest.csv");
+    tmpdataFile->open(QIODevice::ReadOnly);
+    CsvReader* dataFile = new CsvReader(tmpdataFile);
+
+
     formatFile->saveFile();
 
     QToolBar* mainToolBar = new QToolBar();
@@ -61,7 +66,7 @@ int main(int argc, char *argv[])
     window->setLayout(layout);
     window->show();
 
-    AddDialog* dialog = new AddDialog(formatFile);
+    AddDialog* dialog = new AddDialog(formatFile, dataFile);
     dialog->show();
     
     return a.exec();
