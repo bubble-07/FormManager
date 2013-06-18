@@ -25,19 +25,31 @@ AbstractEntry::AbstractEntry(CsvLoc label, CsvLoc data,
 {
     this->displayString = label.get();
 
-    CsvLoc typeLoc = label;
-    typeLoc.advance(0,1);
-    QString type = typeLoc.get();
-    
-    optString = new StringField(data.get());
-
-
-    this->type = AbstractEntry::STRING;
     this->layout = new QHBoxLayout();
 
     this->label = new QLabel(this->displayString);
     this->layout->addWidget(this->label);
-    this->layout->addWidget(this->optString);
+
+
+    CsvLoc typeLoc = label;
+    typeLoc.advance(0,1);
+    QString type = typeLoc.get();
+
+    if (type == " String") {
+        optString = new StringField(data.get());
+        this->type = AbstractEntry::STRING;
+        this->layout->addWidget(this->optString);
+    }
+    if (type == " Number") {
+        optNumber = new NumberField(data.get());
+        this->type = AbstractEntry::NUMBER;
+        this->layout->addWidget(this->optNumber);
+    }
+    if (type == " Bool") {
+        optBool = new BoolField(data.get());
+        this->type = AbstractEntry::BOOL;
+        this->layout->addWidget(this->optBool);
+    }
 
     this->setLayout(this->layout);
 }

@@ -3,6 +3,7 @@
 AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
 {
     this->viewLayout = new QVBoxLayout;
+    this->viewLayout->setSpacing(0);
     
     CsvLoc* labelLoc = new CsvLoc(labelFile, 0, 0);
 

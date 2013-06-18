@@ -1,10 +1,11 @@
 #include "BoolField.h"
 
-BoolField::BoolField(QWidget *parent)
+BoolField::BoolField(const QString& init, QWidget *parent)
     :QSpinBox(parent)
 {
     this->setMinimum(0);
     this->setMaximum(1);
+    this->setValue(this->valueFromText(init)); 
     this->setWrapping(true);
 }
 

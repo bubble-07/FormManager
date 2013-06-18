@@ -9,7 +9,7 @@ class BoolField : public QSpinBox
     Q_OBJECT
 
     public:
-    BoolField(QWidget * parent = 0);
+    BoolField(const QString& init, QWidget * parent = 0);
     QString textFromValue(int in) const;
     int valueFromText(const QString & text) const;
     QValidator::State validate(QString & text, int & pos) const;

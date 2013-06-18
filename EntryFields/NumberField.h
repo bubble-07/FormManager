@@ -9,7 +9,7 @@ class NumberField : public QLineEdit
     Q_OBJECT
 
     public:
-    NumberField(QWidget * parent = 0);
+    NumberField(const QString& init, QWidget * parent = 0);
     
     private:
     QValidator *validator;
