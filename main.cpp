@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     window->setLayout(layout);
     window->show();
 
-    AddDialog* dialog = new AddDialog();
+    AddDialog* dialog = new AddDialog(formatFile);
     dialog->show();
     
     return a.exec();

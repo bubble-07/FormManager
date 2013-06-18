@@ -1,6 +1,7 @@
 #include "StringField.h"
 #include "BoolField.h"
 #include "NumberField.h"
+#include "../CsvLoc.h"
 #include <QWidget>
 #include <QtGui>
 #include <QObject>
@@ -11,6 +12,7 @@
 #ifndef ABSTRACTENTRY_DEFINED
 #define ABSTRACTENTRY_DEFINED
 
+
 class AbstractEntry : public QWidget
 {
     Q_OBJECT
@@ -18,8 +20,9 @@ class AbstractEntry : public QWidget
     public:
     explicit AbstractEntry(QWidget *parent = 0);
     AbstractEntry(StringField* test, QString* label, QWidget *parent = 0);
-    AbstractEntry(BoolField* test, QString* label, QWidget *parent = 0);
-    AbstractEntry(NumberField* test, QString* label, QWidget *parent = 0);
+    AbstractEntry(CsvLoc label, CsvLoc data, QWidget *parent = 0);
+    //AbstractEntry(BoolField* test, QString* label, QWidget *parent = 0);
+    //AbstractEntry(NumberField* test, QString* label, QWidget *parent = 0);
     virtual ~AbstractEntry() {};
 
     private:
@@ -35,7 +38,7 @@ class AbstractEntry : public QWidget
     Type type;
 
     QHBoxLayout *layout;
-    QString* displayString;
+    QString displayString;
     QLabel* label;
 
 };

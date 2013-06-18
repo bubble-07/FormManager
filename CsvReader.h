@@ -1,3 +1,4 @@
+#include <vector>
 #include <QFile>
 
 #ifndef CSVREADER_DEFINED

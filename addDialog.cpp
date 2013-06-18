@@ -1,11 +1,12 @@
 #include "addDialog.h"
 
-AddDialog::AddDialog() :QDialog()
+AddDialog::AddDialog(CsvReader* labelFile) :QDialog()
 {
     this->layout = new QVBoxLayout;
     this->test = new NumberField();
     this->test2 = new BoolField();
-    this->test3 = new AbstractEntry(new StringField(QString("default")), new QString("hi"));
+    //this->test3 = new AbstractEntry(new StringField(QString("default")), new QString("hi"));
+    this->test3 = new AbstractEntry(CsvLoc(labelFile, 0, 0), CsvLoc(labelFile, 0, 0));
     this->layout->addWidget(this->test);
     this->layout->addWidget(this->test2);
     this->layout->addWidget(this->test3);

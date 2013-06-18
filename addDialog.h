@@ -1,5 +1,6 @@
 #include <QVBoxLayout>
 #include <QDialog>
+#include "CsvLoc.h"
 #include "EntryFields/NumberField.h"
 #include "EntryFields/BoolField.h"
 #include "EntryFields/StringField.h"
@@ -12,7 +13,7 @@ class AddDialog : public QDialog
     Q_OBJECT
 
     public:
-    AddDialog();
+    AddDialog(CsvReader* labelFile);
     
     private:
     QVBoxLayout *layout;

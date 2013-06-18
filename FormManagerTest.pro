@@ -21,8 +21,8 @@ SOURCES += main.cpp\
     CsvReader.cpp \
     EntryFields/StringField.cpp \
     EntryFields/BoolField.cpp \
-    EntryFields/AbstractField.cpp \
-    EntryFields/AbstractEntry.cpp
+    EntryFields/AbstractEntry.cpp \
+    CsvLoc.cpp
 
 HEADERS  += \
     mymodel.h \
@@ -33,8 +33,8 @@ HEADERS  += \
     CsvReader.h \
     EntryFields/StringField.h \
     EntryFields/BoolField.h \
-    EntryFields/AbstractField.h \
-    EntryFields/AbstractEntry.h
+    EntryFields/AbstractEntry.h \
+    CsvLoc.h
 
 RESOURCES += \
     Icons.qrc
