@@ -1,4 +1,5 @@
 #include <QVBoxLayout>
+#include <QMessageBox>
 #include <QCloseEvent>
 #include <QDialog>
 #include <QPushButton>
@@ -18,6 +19,8 @@ class AddDialog : public QDialog
 
     public:
     AddDialog(CsvReader* labelFile, CsvLoc* dataLoc);
+    void closeEvent(QCloseEvent *event);
+    ~AddDialog();
     
     private:
     QVBoxLayout *viewLayout;
@@ -27,8 +30,11 @@ class AddDialog : public QDialog
     QVBoxLayout *windowLayout;
     QPushButton *doneButton;
 
+    void close(bool warn);
+
     public slots:
     void saveAllAndExit();
+    void reject();
 };
 
 

@@ -22,7 +22,7 @@ class AbstractEntry : public QWidget
     AbstractEntry(CsvLoc label, CsvLoc data, QWidget *parent = 0);
     //AbstractEntry(BoolField* test, QString* label, QWidget *parent = 0);
     //AbstractEntry(NumberField* test, QString* label, QWidget *parent = 0);
-    virtual ~AbstractEntry() {};
+    ~AbstractEntry();
     void save();
 
     private:

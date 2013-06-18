@@ -17,7 +17,7 @@ AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
         labelLoc->advance(1, 0);
     }
 
-    this->doneButton = new QPushButton("&Save");
+    this->doneButton = new QPushButton("&Save And Finish");
     this->viewLayout->addWidget(doneButton);
     QObject::connect(doneButton, SIGNAL(released()), 
                      this, SLOT(saveAllAndExit()));
@@ -40,5 +40,47 @@ void AddDialog::saveAllAndExit() {
         this->entries[i]->save();
     }
     /*ToDo: dealloc all entries and call destructor, proper*/
-    //this->closeEvent(new QCloseEvent());
+    this->done(0);
+}
+
+//true if the user is warned about closing
+void AddDialog::close(bool warn) {
+    if (warn == true) {
+        QMessageBox quitBox;
+        quitBox.setText("You did not hit the save button.");
+        quitBox.setInformativeText("Do you want to save changes?");
+        quitBox.setStandardButtons(QMessageBox::Save | 
+                                   QMessageBox::Discard);
+        quitBox.setDefaultButton(QMessageBox::Save);
+
+        int ret = quitBox.exec();
+        if (ret == QMessageBox::Save) {
+            this->saveAllAndExit();
+        }
+    }
+    else {
+        this->saveAllAndExit();
+    }
+    return;
+}
+
+//what happens when the window is closed with the "close" button
+void AddDialog::closeEvent(QCloseEvent *event) {
+   close(true);
+}
+
+//what happens when the "Esc" key is pressed
+void AddDialog::reject() {
+    close(true);
+}
+
+AddDialog::~AddDialog() {
+    for (size_t i = 0; i < entries.size(); i++) {
+        delete entries[i];
+    }
+    delete viewLayout;
+    delete displayArea;
+    delete scrollArea;
+    delete windowLayout;
+    delete doneButton;
 }

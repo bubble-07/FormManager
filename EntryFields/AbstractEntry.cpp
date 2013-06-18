@@ -52,3 +52,18 @@ void AbstractEntry::save() {
     }
     return;
 }
+
+AbstractEntry::~AbstractEntry() {
+    if (this->type == AbstractEntry::BOOL) {
+        delete optBool;
+    }
+    if (this->type == AbstractEntry::NUMBER) {
+        delete optNumber;
+    }
+    if (this->type == AbstractEntry::STRING) {
+        delete optString;
+    }
+
+    delete layout;
+    delete label;
+}
