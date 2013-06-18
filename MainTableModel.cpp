@@ -19,6 +19,7 @@ void MainTableModel::addRow() {
     this->rRowCount += 1;
 
     this->endInsertRows();
+    this->editRow(this->createIndex(rRowCount - 1, 0));
 }
 
 int MainTableModel::rowCount(const QModelIndex & /*parent*/) const
