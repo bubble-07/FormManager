@@ -3,8 +3,6 @@
 #include <sstream>
 #include <QTextStream>
 #include "CsvReader.h"
-#define MAX_LINE_WIDTH 1048576
-
 
 CsvReader::CsvReader(QFile* in) {
     mainFile = in;
@@ -57,8 +55,20 @@ void CsvReader::saveFile() {
         output << endl;
     }
 }
-    
-    
+
+void CsvReader::addRow() {
+    std::vector<std::string> tmp;
+    this->parsedFile.push_back(tmp);
+    return;
+}
+void CsvReader::addToRow(int row, std::string val) {
+    this->parsedFile[row].push_back(val);
+    return;
+}
+void CsvReader::addRow(std::vector<std::string> init) {
+    this->parsedFile.push_back(init);
+    return;
+}
 
 size_t CsvReader::getNumRows() {
     return this->parsedFile.size();
