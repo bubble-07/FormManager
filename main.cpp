@@ -35,6 +35,9 @@ int main(int argc, char *argv[])
     mainToolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 
 
+    QWidget* window = new QWidget();
+
+
     const QIcon peopleicon(":/icons/user");
     mainToolBar->addAction(peopleicon, QString("People"));
 
@@ -44,11 +47,15 @@ int main(int argc, char *argv[])
     const QIcon saveicon(":/icons/database_save");
     mainToolBar->addAction(saveicon, QString("Save"));
 
+
     const QIcon addicon(":/icons/add");
-    mainToolBar->addAction(addicon, QString("Add"));
+    QAction* addaction = new QAction(addicon, QString("Add"), window);
+    mainToolBar->addAction(addaction);
 
     MainTableModel myModel(0, formatFile, dataFile);
     MainTable table(0, &myModel);
+
+    QObject::connect(addaction, SIGNAL(triggered()), &table, SLOT(addRow()));
 
 
     QMenuBar menu;
@@ -63,7 +70,6 @@ int main(int argc, char *argv[])
     layout->addWidget(mainToolBar);
     layout->addWidget(&table);
 
-    QWidget* window = new QWidget();
     window->setLayout(layout);
     window->show();
 

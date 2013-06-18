@@ -10,9 +10,13 @@ class MainTable : public QTableView
 
     public:
     MainTable(QWidget *parent, MainTableModel* model);
+
+    private:
+    MainTableModel* model;
     
     public slots:
     void toggleHidden(int col);
+    void addRow();
 };
 
 #endif

@@ -11,6 +11,16 @@ MainTableModel::MainTableModel(QObject *parent,
    return;
 }
 
+void MainTableModel::addRow() {
+    this->beginInsertRows(QModelIndex(), rRowCount, rRowCount);
+
+    std::vector<std::string> tmp(rColCount, "");
+    this->dataFile->addRow(tmp);
+    this->rRowCount += 1;
+
+    this->endInsertRows();
+}
+
 int MainTableModel::rowCount(const QModelIndex & /*parent*/) const
 {
     return rRowCount;
@@ -25,9 +35,6 @@ QVariant MainTableModel::data(const QModelIndex &index, int role) const
 {
     if (role == Qt::DisplayRole) {
         return this->dataFile->get(index.row(), index.column());
-        return QString("Row%1, Column %2")
-                .arg(index.row() + 1)
-                .arg(index.column() + 1);
     }
     return QVariant();
 }
