@@ -13,8 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    mymodel.cpp \
-    mainTable.cpp \
     visibilityMenu.cpp \
     addDialog.cpp \
     EntryFields/NumberField.cpp \
@@ -22,11 +20,11 @@ SOURCES += main.cpp\
     EntryFields/StringField.cpp \
     EntryFields/BoolField.cpp \
     EntryFields/AbstractEntry.cpp \
-    CsvLoc.cpp
+    CsvLoc.cpp \
+    MainTableModel.cpp \
+    MainTable.cpp
 
 HEADERS  += \
-    mymodel.h \
-    mainTable.h \
     visibilityMenu.h \
     addDialog.h \
     EntryFields/NumberField.h \
@@ -34,7 +32,9 @@ HEADERS  += \
     EntryFields/StringField.h \
     EntryFields/BoolField.h \
     EntryFields/AbstractEntry.h \
-    CsvLoc.h
+    CsvLoc.h \
+    MainTableModel.h \
+    MainTable.h
 
 RESOURCES += \
     Icons.qrc

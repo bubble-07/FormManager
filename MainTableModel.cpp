@@ -1,6 +1,6 @@
-#include "mymodel.h"
+#include "MainTableModel.h"
 
-MyModel::MyModel(QObject *parent, CsvReader* in)
+MainTableModel::MainTableModel(QObject *parent, CsvReader* in)
     :QAbstractTableModel(parent)
 {
    this->formatFile = in;
@@ -9,17 +9,17 @@ MyModel::MyModel(QObject *parent, CsvReader* in)
    return;
 }
 
-int MyModel::rowCount(const QModelIndex & /*parent*/) const
+int MainTableModel::rowCount(const QModelIndex & /*parent*/) const
 {
     return rRowCount;
 }
 
-int MyModel::columnCount(const QModelIndex &) const
+int MainTableModel::columnCount(const QModelIndex &) const
 {
     return rColCount;
 }
 
-QVariant MyModel::data(const QModelIndex &index, int role) const
+QVariant MainTableModel::data(const QModelIndex &index, int role) const
 {
     if (role == Qt::DisplayRole) {
         return QString("Row%1, Column %2")
@@ -32,7 +32,7 @@ QVariant MyModel::data(const QModelIndex &index, int role) const
     }
     return QVariant();
 }
-QVariant MyModel::headerData(int s, Qt::Orientation o, int role) const {
+QVariant MainTableModel::headerData(int s, Qt::Orientation o, int role) const {
     if (role == Qt::DisplayRole) {
         if (o==Qt::Horizontal) {
             return formatFile->get(s, 0);

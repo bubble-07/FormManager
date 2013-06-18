@@ -3,15 +3,15 @@
 #include <QFile>
 #include "CsvReader.h"
 
-#ifndef MYMODEL_DEFINED
-#define MYMODEL_DEFINED
+#ifndef MAINTABLEMODEL_DEFINED
+#define MAINTABLEMODEL_DEFINED
 
-class MyModel : public QAbstractTableModel
+class MainTableModel : public QAbstractTableModel
 {
     Q_OBJECT
 
     public:
-    MyModel(QObject *parent, CsvReader* in);
+    MainTableModel(QObject *parent, CsvReader* in);
     int rowCount(const QModelIndex &parent = QModelIndex()) const ;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;

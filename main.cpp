@@ -9,8 +9,8 @@
 #include <vector>
 #include "CsvReader.h"
 #include "CsvLoc.h"
-#include "mymodel.h"
-#include "mainTable.h"
+#include "MainTableModel.h"
+#include "MainTable.h"
 #include "visibilityMenu.h"
 #include "addDialog.h"
 #include "EntryFields/NumberField.h"
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     const QIcon addicon(":/icons/add");
     mainToolBar->addAction(addicon, QString("Add"));
 
-    MyModel myModel(0, formatFile);
+    MainTableModel myModel(0, formatFile);
     MainTable table(0, &myModel);
 
 

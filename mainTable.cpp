@@ -1,6 +1,6 @@
 #include "mainTable.h"
 
-MainTable::MainTable(QWidget *parent, MyModel* model) 
+MainTable::MainTable(QWidget *parent, MainTableModel* model) 
     :QTableView(parent)
 {
     this->setModel(model);
