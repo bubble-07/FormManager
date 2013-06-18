@@ -14,13 +14,10 @@ class AddDialog : public QDialog
     Q_OBJECT
 
     public:
-    AddDialog(CsvReader* labelFile, CsvReader* dataFile);
+    AddDialog(CsvReader* labelFile, CsvLoc* dataLoc);
     
     private:
     QVBoxLayout *layout;
-    //NumberField *test;
-    //BoolField *test2;
-    //AbstractEntry *test3;
     std::vector<AbstractEntry*> entries;
 };
 

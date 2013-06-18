@@ -8,6 +8,7 @@
 #include <QMenuBar>
 #include <vector>
 #include "CsvReader.h"
+#include "CsvLoc.h"
 #include "mymodel.h"
 #include "mainTable.h"
 #include "visibilityMenu.h"
@@ -66,7 +67,8 @@ int main(int argc, char *argv[])
     window->setLayout(layout);
     window->show();
 
-    AddDialog* dialog = new AddDialog(formatFile, dataFile);
+    CsvLoc dataLoc = CsvLoc(dataFile, 0, 0);
+    AddDialog* dialog = new AddDialog(formatFile, &dataLoc);
     dialog->show();
     
     return a.exec();
