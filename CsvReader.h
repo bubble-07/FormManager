@@ -19,6 +19,7 @@ class CsvReader
     private:
     QFile* mainFile;
     void loadFile();
+    std::string removeSpacesAfterCommas(std::string in);
     std::vector<std::vector<std::string> > parsedFile;
 };
 

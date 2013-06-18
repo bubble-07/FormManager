@@ -35,17 +35,17 @@ AbstractEntry::AbstractEntry(CsvLoc label, CsvLoc data,
     typeLoc.advance(0,1);
     QString type = typeLoc.get();
 
-    if (type == " String") {
+    if (type == "String") {
         optString = new StringField(data.get());
         this->type = AbstractEntry::STRING;
         this->layout->addWidget(this->optString);
     }
-    if (type == " Number") {
+    if (type == "Number") {
         optNumber = new NumberField(data.get());
         this->type = AbstractEntry::NUMBER;
         this->layout->addWidget(this->optNumber);
     }
-    if (type == " Bool") {
+    if (type == "Bool") {
         optBool = new BoolField(data.get());
         this->type = AbstractEntry::BOOL;
         this->layout->addWidget(this->optBool);

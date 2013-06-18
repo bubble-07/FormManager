@@ -27,11 +27,26 @@ void CsvReader::set(int row, int column, std::string val) {
     this->parsedFile[row][column] = val;
 }
 
+std::string CsvReader::removeSpacesAfterCommas(std::string in) {
+    size_t n = 0;
+    for (size_t i = 0; i < in.size(); i++, n++) {
+        in[n] = in[i];
+        if (in[i] == ',' and i + 1 < in.size()) {
+            if (in[i+1] == ' ') {
+                i++;
+            }
+        }
+    }
+    in.resize(n);
+    return in;
+}
+
 void CsvReader::loadFile() {
     mainFile->reset();
     QTextStream input(mainFile);
     for (; !input.atEnd();) {
         std::string line = input.readLine().toStdString();
+        line = this->removeSpacesAfterCommas(line);
         std::vector<std::string> parsed_line = split(line, ',');
         this->parsedFile.push_back(parsed_line);
     }
@@ -49,7 +64,7 @@ void CsvReader::saveFile() {
             output << this->get(i, j);
 
             if (j < (this->parsedFile[i].size() - 1)) {
-                output << ",";
+                output << ", ";
             }
         }
         output << endl;
