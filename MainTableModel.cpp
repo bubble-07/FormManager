@@ -1,10 +1,12 @@
 #include "MainTableModel.h"
 
-MainTableModel::MainTableModel(QObject *parent, CsvReader* in)
+MainTableModel::MainTableModel(QObject *parent, 
+                               CsvReader* format, CsvReader* data)
     :QAbstractTableModel(parent)
 {
-   this->formatFile = in;
-   this->rRowCount = 2;
+   this->formatFile = format;
+   this->dataFile = data;
+   this->rRowCount = this->dataFile->getNumRows();
    this->rColCount = this->formatFile->getNumRows();
    return;
 }
@@ -22,13 +24,10 @@ int MainTableModel::columnCount(const QModelIndex &) const
 QVariant MainTableModel::data(const QModelIndex &index, int role) const
 {
     if (role == Qt::DisplayRole) {
+        return this->dataFile->get(index.row(), index.column());
         return QString("Row%1, Column %2")
                 .arg(index.row() + 1)
                 .arg(index.column() + 1);
-        //CsvReader tmp = CsvReader(formatFile);
-        //return tmp.get(index.row(), index.column());
-        //return QString("Num%1").arg(tmp.getNumRows());
-
     }
     return QVariant();
 }

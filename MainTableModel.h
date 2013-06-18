@@ -11,7 +11,7 @@ class MainTableModel : public QAbstractTableModel
     Q_OBJECT
 
     public:
-    MainTableModel(QObject *parent, CsvReader* in);
+    MainTableModel(QObject *parent, CsvReader* format, CsvReader* data);
     int rowCount(const QModelIndex &parent = QModelIndex()) const ;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
@@ -21,6 +21,7 @@ class MainTableModel : public QAbstractTableModel
     int rRowCount;
     int rColCount;
     CsvReader* formatFile;
+    CsvReader* dataFile;
 };
 
 #endif

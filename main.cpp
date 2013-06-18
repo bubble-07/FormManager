@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     const QIcon addicon(":/icons/add");
     mainToolBar->addAction(addicon, QString("Add"));
 
-    MainTableModel myModel(0, formatFile);
+    MainTableModel myModel(0, formatFile, dataFile);
     MainTable table(0, &myModel);
 
 
