@@ -42,7 +42,7 @@ void MainTable::deleteSelected() {
 
         int ret = deleteBox.exec();
         if (ret == QMessageBox::Ok) {
-            this->model->deleteRow(indexes[0]);
+            this->model->deleteRows(indexes[0], indexes[indexes.size()-1]);
         }
     }
     //else, do nothing -- can't delete nothing

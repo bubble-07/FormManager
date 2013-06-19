@@ -29,6 +29,8 @@ class MainTableModel : public QAbstractTableModel
     void editRow(const QModelIndex& index);
     void editCell(const QModelIndex& index);
     void deleteRow(const QModelIndex& index);
+    void deleteRows(const QModelIndex& indexOne,
+                    const QModelIndex& indexTwo);
 };
 
 #endif

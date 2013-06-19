@@ -74,4 +74,12 @@ void MainTableModel::deleteRow(const QModelIndex& index) {
     return;
 }
 
+void MainTableModel::deleteRows(const QModelIndex& indexOne, 
+                                const QModelIndex& indexTwo) {
+    this->beginRemoveRows(QModelIndex(), indexOne.row(), indexTwo.row());
+    this->dataFile->deleteRows(indexOne.row(), indexTwo.row());
+    this->rRowCount -= (indexTwo.row() - indexOne.row() + 1);
+    this->endRemoveRows();
+    return;
+}
 

@@ -89,6 +89,12 @@ void CsvReader::deleteRow(int row) {
         this->parsedFile.erase(this->parsedFile.begin() + row); 
     return;
 }
+void CsvReader::deleteRows(int begin, int end) {
+    if (begin > -1 and end < parsedFile.size())
+        this->parsedFile.erase(this->parsedFile.begin() + begin,
+                               this->parsedFile.begin() + end + 1); 
+    return;
+}
 size_t CsvReader::getNumRows() {
     return this->parsedFile.size();
 }
