@@ -24,6 +24,7 @@ class AbstractEntry : public QWidget
     //AbstractEntry(NumberField* test, QString* label, QWidget *parent = 0);
     ~AbstractEntry();
     void save();
+    void setAsFocus();
 
     private:
     StringField* optString;

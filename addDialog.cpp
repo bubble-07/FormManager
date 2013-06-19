@@ -1,6 +1,7 @@
 #include "addDialog.h"
 
-AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
+AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc, int entryFocus)
+        :QDialog()
 {
     this->viewLayout = new QVBoxLayout;
     this->viewLayout->setSpacing(0);
@@ -33,6 +34,10 @@ AddDialog::AddDialog(CsvReader* labelFile, CsvLoc* dataLoc) :QDialog()
     
     this->setModal(true);
 
+    if (entryFocus != -1) {
+        this->setFieldFocus(entryFocus);
+    }
+
     return;
 }
 void AddDialog::saveAllAndExit() {
@@ -60,6 +65,13 @@ void AddDialog::close(bool warn) {
     }
     else {
         this->saveAllAndExit();
+    }
+    return;
+}
+
+void AddDialog::setFieldFocus(int pos) {
+    if (this->entries.size() > pos) {
+        this->entries[pos]->setAsFocus();
     }
     return;
 }

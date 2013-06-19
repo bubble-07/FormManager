@@ -27,6 +27,7 @@ class MainTableModel : public QAbstractTableModel
     
     public slots:
     void editRow(const QModelIndex& index);
+    void editCell(const QModelIndex& index);
 };
 
 #endif

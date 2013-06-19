@@ -17,6 +17,7 @@ class MainTable : public QTableView
     public slots:
     void toggleHidden(int col);
     void addRow();
+    void editSelected();
 };
 
 #endif

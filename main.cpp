@@ -48,16 +48,28 @@ int main(int argc, char *argv[])
     mainToolBar->addAction(saveicon, QString("Save"));
 
 
+    MainTableModel myModel(0, formatFile, dataFile);
+    MainTable table(0, &myModel);
+
+
+
+    const QIcon editicon(":/icons/application_edit");
+    QAction* editaction = new QAction(editicon, QString("Edit"), window);
+    mainToolBar->addAction(editaction);
+
+    QObject::connect(editaction, SIGNAL(triggered()),
+                     &table, SLOT(editSelected()));
+
+
     const QIcon addicon(":/icons/add");
     QAction* addaction = new QAction(addicon, QString("Add"), window);
     mainToolBar->addAction(addaction);
 
-    MainTableModel myModel(0, formatFile, dataFile);
-    MainTable table(0, &myModel);
-
-    QObject::connect(addaction, SIGNAL(triggered()), &table, SLOT(addRow()));
+    QObject::connect(addaction, SIGNAL(triggered()), 
+                     &table, SLOT(addRow()));
 
 
+    
     QMenuBar menu;
 
     VisibilityMenu* showhide = new VisibilityMenu(QString("Show/Hide"), formatFile, &table);

@@ -53,6 +53,23 @@ void AbstractEntry::save() {
     return;
 }
 
+void AbstractEntry::setAsFocus() {
+    this->setFocus(Qt::TabFocusReason);
+    if (this->type == AbstractEntry::STRING) {
+        this->optString->selectAll();
+        this->optString->setFocus(Qt::TabFocusReason);
+    }
+    if (this->type == AbstractEntry::NUMBER) {
+        this->optNumber->selectAll();
+        this->optNumber->setFocus(Qt::TabFocusReason);
+    }
+    if (this->type == AbstractEntry::BOOL) {
+        this->optBool->selectAll();
+        this->optBool->setFocus(Qt::TabFocusReason);
+    }
+    
+}
+
 AbstractEntry::~AbstractEntry() {
     if (this->type == AbstractEntry::BOOL) {
         delete optBool;

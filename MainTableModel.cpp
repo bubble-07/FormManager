@@ -58,5 +58,13 @@ void MainTableModel::editRow(const QModelIndex& index) {
     delete dialog;
     return;
 }
+void MainTableModel::editCell(const QModelIndex& index) {
+    CsvLoc dataLoc(this->dataFile, index.row(), 0);
+    AddDialog* dialog;
+    dialog = new AddDialog(this->formatFile, &dataLoc, index.column());
+    dialog->exec();
+    delete dialog;
+    return;
+}
 
 

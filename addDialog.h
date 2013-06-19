@@ -18,7 +18,7 @@ class AddDialog : public QDialog
     Q_OBJECT
 
     public:
-    AddDialog(CsvReader* labelFile, CsvLoc* dataLoc);
+    AddDialog(CsvReader* labelFile, CsvLoc* dataLoc, int entryFocus = -1);
     void closeEvent(QCloseEvent *event);
     ~AddDialog();
     
@@ -29,6 +29,8 @@ class AddDialog : public QDialog
     QScrollArea* scrollArea;
     QVBoxLayout *windowLayout;
     QPushButton *doneButton;
+
+    void setFieldFocus(int pos);
 
     void close(bool warn);
 
