@@ -66,5 +66,12 @@ void MainTableModel::editCell(const QModelIndex& index) {
     delete dialog;
     return;
 }
+void MainTableModel::deleteRow(const QModelIndex& index) {
+    this->beginRemoveRows(QModelIndex(), index.row(), index.row());
+    this->dataFile->deleteRow(index.row());
+    this->rRowCount -= 1;
+    this->endRemoveRows();
+    return;
+}
 
 

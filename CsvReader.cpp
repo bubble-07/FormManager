@@ -84,7 +84,11 @@ void CsvReader::addRow(std::vector<std::string> init) {
     this->parsedFile.push_back(init);
     return;
 }
-
+void CsvReader::deleteRow(int row) {
+    if (row > -1 and row < parsedFile.size())
+        this->parsedFile.erase(this->parsedFile.begin() + row); 
+    return;
+}
 size_t CsvReader::getNumRows() {
     return this->parsedFile.size();
 }

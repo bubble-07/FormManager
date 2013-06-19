@@ -15,6 +15,7 @@ class CsvReader
     void addRow();
     void addRow(std::vector<std::string> init);
     void addToRow(int row, std::string val);
+    void deleteRow(int row);
     
     private:
     QFile* mainFile;

@@ -18,6 +18,7 @@ class MainTable : public QTableView
     void toggleHidden(int col);
     void addRow();
     void editSelected();
+    void deleteSelected();
 };
 
 #endif

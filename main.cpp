@@ -60,6 +60,14 @@ int main(int argc, char *argv[])
     QObject::connect(editaction, SIGNAL(triggered()),
                      &table, SLOT(editSelected()));
 
+    
+    const QIcon delicon(":/icons/delete");
+    QAction* deleteaction = new QAction(delicon, QString("Delete"), window);
+    mainToolBar->addAction(deleteaction);
+
+    QObject::connect(deleteaction, SIGNAL(triggered()),
+                     &table, SLOT(deleteSelected()));
+
 
     const QIcon addicon(":/icons/add");
     QAction* addaction = new QAction(addicon, QString("Add"), window);
