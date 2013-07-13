@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     EntryFields/AbstractEntry.cpp \
     CsvLoc.cpp \
     MainTableModel.cpp \
-    MainTable.cpp
+    MainTable.cpp \
+    BundleReader.cpp
 
 HEADERS  += \
     visibilityMenu.h \
@@ -34,7 +35,8 @@ HEADERS  += \
     EntryFields/AbstractEntry.h \
     CsvLoc.h \
     MainTableModel.h \
-    MainTable.h
+    MainTable.h \
+    BundleReader.h
 
 RESOURCES += \
     Icons.qrc

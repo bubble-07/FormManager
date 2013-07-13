@@ -13,6 +13,7 @@
 #include "MainTable.h"
 #include "visibilityMenu.h"
 #include "addDialog.h"
+#include "BundleReader.h"
 #include "EntryFields/NumberField.h"
 
 int main(int argc, char *argv[])
@@ -26,8 +27,15 @@ int main(int argc, char *argv[])
     tmpdataFile->open(QIODevice::ReadOnly);
     CsvReader* dataFile = new CsvReader(tmpdataFile);
 
-
-    formatFile->saveFile();
+    BundleReader bundle(new QFile("c://testThing.csv"));
+    bundle.addFile(tmpdataFile);
+    bundle.addFile(tmpformatFile);
+    bundle.pack("c://testPacking.form");
+/*
+    BundleReader bundle(new QFile("c://testPacking.form"));
+    bundle.extract();
+    printf(bundle.path().toLocal8Bit());
+*/
 
     QToolBar* mainToolBar = new QToolBar();
     mainToolBar->setMovable(true);

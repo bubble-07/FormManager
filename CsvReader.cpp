@@ -71,6 +71,22 @@ void CsvReader::saveFile() {
     }
 }
 
+void CsvReader::saveFileNoClose() {
+    QTextStream output(mainFile);
+
+    for (size_t i = 0; i < this->getNumRows(); i++) {
+        for (size_t j = 0; j < this->parsedFile[i].size(); j++) {
+
+            output << this->get(i, j);
+
+            if (j < (this->parsedFile[i].size() - 1)) {
+                output << ", ";
+            }
+        }
+        output << endl;
+    }
+}
+
 void CsvReader::addRow() {
     std::vector<std::string> tmp;
     this->parsedFile.push_back(tmp);
@@ -97,4 +113,7 @@ void CsvReader::deleteRows(int begin, int end) {
 }
 size_t CsvReader::getNumRows() {
     return this->parsedFile.size();
+}
+std::vector<std::string> CsvReader::getRow(int row) {
+    return parsedFile[row];
 }
