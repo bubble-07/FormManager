@@ -1,6 +1,6 @@
 #include "BundleReader.h"
 
-BundleReader::BundleReader(QFile* in) {
+BundleReader::BundleReader(CsvReader* in) {
     this->originFile = in;
     this->contentsDir = new QTemporaryDir();
     return;
@@ -26,14 +26,11 @@ void BundleReader::pack(QString destination) {
     QDir bundleDir(this->path());
     QStringList filters;
     filters << "*.csv";
+
+    originFile->deleteAll();
     
     QFileInfoList containedFiles = bundleDir.entryInfoList(filters);
 
-    QFile packingFile("c://tmpfile.csv");
-    packingFile.open(QIODevice::ReadWrite | QFile::Truncate);
-    
-    CsvReader csvFile(&packingFile);
-    
     for (size_t i = 0; i < containedFiles.size(); i++) {
         QFile tmpFile(containedFiles[i].filePath());
         tmpFile.open(QIODevice::ReadOnly);
@@ -50,34 +47,20 @@ void BundleReader::pack(QString destination) {
             numRows = tmpStream.str();
         }
         header.push_back(numRows);
-        csvFile.addRow(header);
+        originFile->addRow(header);
         printLine(header);
 
         /*add the data from each entry*/
         for (size_t j = 0; j < tmpReader.getNumRows(); j++) {
             printLine(tmpReader.getRow(j));
-            csvFile.addRow(tmpReader.getRow(j));
+            originFile->addRow(tmpReader.getRow(j));
         }
     }
 
-    csvFile.saveFile();
-    packingFile.close();
-    packingFile.open(QFile::ReadOnly);
-
-    QByteArray tmpArray = packingFile.readAll();
-
-    QByteArray compressedData = qCompress(tmpArray, 8);
-    
-    QFile* packedFile = new QFile(destination);
-    packedFile->open(QIODevice::WriteOnly);
-    //packedFile->write(compressedData);
-    printf("Error: %i \n", packedFile->write(compressedData));
-    packedFile->close();
-    delete packedFile;
-    
+    originFile->saveFile();
     return;
 }
-     
+    /* 
 void BundleReader::extract() {
 
     QDir bundleDir(this->path());
@@ -108,5 +91,5 @@ void BundleReader::extract() {
         currentQFile.close();
     }
     return;
-}
+} */
 

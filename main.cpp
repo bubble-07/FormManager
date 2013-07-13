@@ -27,7 +27,11 @@ int main(int argc, char *argv[])
     tmpdataFile->open(QIODevice::ReadOnly);
     CsvReader* dataFile = new CsvReader(tmpdataFile);
 
-    BundleReader bundle(new QFile("c://testThing.csv"));
+    QFile* bundleTest = new QFile("c:://testThing.csv");
+    bundleTest->open(QIODevice::ReadWrite);
+    CsvReader* bundleTestRead = new CsvReader(bundleTest);
+
+    BundleReader bundle(bundleTestRead);
     bundle.addFile(tmpdataFile);
     bundle.addFile(tmpformatFile);
     bundle.pack("c://testPacking.form");

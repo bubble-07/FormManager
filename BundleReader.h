@@ -10,14 +10,14 @@
 class BundleReader
 {
     public:
-    BundleReader(QFile* in);
-    void extract();
+    BundleReader(CsvReader* in);
+    //void extract();
     void addFile(QFile* toAdd);
     void pack(QString destination);
     QString path();
 
     private:
-    QFile* originFile;
+    CsvReader* originFile;
     QTemporaryDir* contentsDir;
 };
 #endif

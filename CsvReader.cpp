@@ -105,6 +105,10 @@ void CsvReader::deleteRow(int row) {
         this->parsedFile.erase(this->parsedFile.begin() + row); 
     return;
 }
+void CsvReader::deleteAll() {
+    this->deleteRows(0, parsedFile.size() - 1);
+    return;
+}
 void CsvReader::deleteRows(int begin, int end) {
     if (begin > -1 and end < parsedFile.size())
         this->parsedFile.erase(this->parsedFile.begin() + begin,
