@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
     tmpdataFile->open(QIODevice::ReadOnly);
     CsvReader* dataFile = new CsvReader(tmpdataFile);
 
-    QFile* bundleTest = new QFile("c:://testThing.csv");
-    bundleTest->open(QIODevice::ReadWrite);
-    CsvReader* bundleTestRead = new CsvReader(bundleTest);
+    QFile* bundleTest = new QFile("c://siwwy.csv");
+    bundleTest->open(QFile::Text | QFile::Truncate | QFile::WriteOnly);
+    CsvReader* bundleTestRead = new CsvReader(bundleTest, 0);
 
     BundleReader bundle(bundleTestRead);
     bundle.addFile(tmpdataFile);

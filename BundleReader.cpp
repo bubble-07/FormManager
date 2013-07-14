@@ -27,13 +27,13 @@ void BundleReader::pack(QString destination) {
     QStringList filters;
     filters << "*.csv";
 
-    originFile->deleteAll();
+    //originFile->deleteAll();
     
     QFileInfoList containedFiles = bundleDir.entryInfoList(filters);
 
     for (size_t i = 0; i < containedFiles.size(); i++) {
         QFile tmpFile(containedFiles[i].filePath());
-        tmpFile.open(QIODevice::ReadOnly);
+        tmpFile.open(QFile::ReadOnly | QFile::Text );
         CsvReader tmpReader(&tmpFile);
 
         /*add the header for each entry*/
@@ -57,7 +57,7 @@ void BundleReader::pack(QString destination) {
         }
     }
 
-    originFile->saveFile();
+    this->originFile->saveFileNoClose();
     return;
 }
     /* 

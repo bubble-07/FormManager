@@ -8,6 +8,7 @@ class CsvReader
 {
     public:
     CsvReader(QFile* in);
+    CsvReader(QFile* in, int PLACEHOLDER);
     QString get(int row, int column);
     size_t getNumRows();
     void saveFile();

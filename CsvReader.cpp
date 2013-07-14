@@ -9,6 +9,11 @@ CsvReader::CsvReader(QFile* in) {
     this->loadFile();
     return;
 }
+//this is used for when a file needs to be used without loading it
+CsvReader::CsvReader(QFile* in, int PLACEHOLDER) {
+    mainFile = in;
+    return;
+}
 
 std::vector<std::string> split(const std::string &s, char delim) {
     std::vector<std::string> elems;
@@ -106,7 +111,9 @@ void CsvReader::deleteRow(int row) {
     return;
 }
 void CsvReader::deleteAll() {
-    this->deleteRows(0, parsedFile.size() - 1);
+    if (this->parsedFile.size() > 1) {
+        this->deleteRows(0, this->parsedFile.size()-1);
+    }
     return;
 }
 void CsvReader::deleteRows(int begin, int end) {
