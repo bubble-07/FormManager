@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     CsvLoc.cpp \
     MainTableModel.cpp \
     MainTable.cpp \
-    BundleReader.cpp
+    BundleReader.cpp \
+    FileSelector.cpp
 
 HEADERS  += \
     visibilityMenu.h \
@@ -36,7 +37,8 @@ HEADERS  += \
     CsvLoc.h \
     MainTableModel.h \
     MainTable.h \
-    BundleReader.h
+    BundleReader.h \
+    FileSelector.h
 
 RESOURCES += \
     Icons.qrc

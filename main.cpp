@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QFileDialog>
 #include <QSignalMapper>
 #include <QAction>
 #include <QVBoxLayout>
@@ -14,6 +15,7 @@
 #include "visibilityMenu.h"
 #include "addDialog.h"
 #include "BundleReader.h"
+#include "FileSelector.h"
 #include "EntryFields/NumberField.h"
 
 int main(int argc, char *argv[])
@@ -49,6 +51,17 @@ int main(int argc, char *argv[])
 
 
     QWidget* window = new QWidget();
+
+
+    FileSelector* mainSelector = new FileSelector();
+
+    const QIcon openicon(":/icons/folder.png");
+    QAction* openaction = new QAction(openicon, QString("Open"), window);
+    mainToolBar->addAction(openaction);
+
+    QObject::connect(openaction, SIGNAL(triggered()),
+                     mainSelector, SLOT(select()));
+
 
 
     const QIcon peopleicon(":/icons/user");
@@ -103,13 +116,15 @@ int main(int argc, char *argv[])
     layout->addWidget(mainToolBar);
     layout->addWidget(&table);
 
+
     window->setLayout(layout);
     window->show();
 
-    CsvLoc dataLoc = CsvLoc(dataFile, 0, 0);
-    AddDialog* dialog = new AddDialog(formatFile, &dataLoc);
-    dialog->exec();
-    delete dialog;
+
+    //CsvLoc dataLoc = CsvLoc(dataFile, 0, 0);
+    //AddDialog* dialog = new AddDialog(formatFile, &dataLoc);
+    //dialog->exec();
+    //delete dialog;
     
     return a.exec();
 }
