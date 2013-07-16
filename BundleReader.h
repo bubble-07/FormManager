@@ -11,7 +11,7 @@ class BundleReader
 {
     public:
     BundleReader(CsvReader* in);
-    //void extract();
+    void extract();
     void addFile(QFile* toAdd);
     void pack(QString destination);
     QString path();

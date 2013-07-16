@@ -57,24 +57,15 @@ void BundleReader::pack(QString destination) {
         }
     }
 
-    this->originFile->saveFileNoClose();
+    this->originFile->saveFile();
     return;
 }
-    /* 
 void BundleReader::extract() {
 
     QDir bundleDir(this->path());
 
-    QByteArray data = qUncompress(this->originFile->readAll());
-    
-    QTemporaryFile unpackingFile;
-    unpackingFile.open();
-    unpackingFile.write(data);
-    
-    CsvReader csvFile(&unpackingFile);
-    
-    for (size_t i = 0; i < csvFile.getNumRows(); i++) {
-        std::vector<std::string> header = csvFile.getRow(i);
+    for (size_t i = 0; i < originFile->getNumRows(); i++) {
+        std::vector<std::string> header = originFile->getRow(i);
         QString filename = QString(header[0].c_str());
         size_t numRows = atoi(header[1].c_str());
 
@@ -85,11 +76,11 @@ void BundleReader::extract() {
 
         for (size_t n = 0; n < numRows; n++) {
             i++;
-            currentFile.addRow(csvFile.getRow(i));
+            currentFile.addRow(originFile->getRow(i));
         }
         currentFile.saveFile();
         currentQFile.close();
     }
     return;
-} */
+}
 

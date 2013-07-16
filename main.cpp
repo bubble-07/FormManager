@@ -28,12 +28,13 @@ int main(int argc, char *argv[])
     CsvReader* dataFile = new CsvReader(tmpdataFile);
 
     QFile* bundleTest = new QFile("c://siwwy.csv");
-    bundleTest->open(QFile::Text | QFile::Truncate | QFile::WriteOnly);
-    CsvReader* bundleTestRead = new CsvReader(bundleTest, 0);
+    bundleTest->open(QFile::Text | QFile::ReadWrite);
+    CsvReader* bundleTestRead = new CsvReader(bundleTest);
 
     BundleReader bundle(bundleTestRead);
-    bundle.addFile(tmpdataFile);
-    bundle.addFile(tmpformatFile);
+    bundle.extract();
+    //bundle.addFile(tmpdataFile);
+    //bundle.addFile(tmpformatFile);
     bundle.pack("c://testPacking.form");
 /*
     BundleReader bundle(new QFile("c://testPacking.form"));
