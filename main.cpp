@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     bundle.extract();
     //bundle.addFile(tmpdataFile);
     //bundle.addFile(tmpformatFile);
-    bundle.pack("c://testPacking.form");
+    bundle.pack();
 /*
     BundleReader bundle(new QFile("c://testPacking.form"));
     bundle.extract();

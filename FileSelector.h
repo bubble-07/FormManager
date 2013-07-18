@@ -1,5 +1,6 @@
 #include <QWidget>
 #include <QFileDialog>
+#include "CsvReader.h"
 #ifndef FILESELECTOR_DEFINED
 #define FILESELECTOR_DEFINED
 class FileSelector : public QObject
@@ -11,6 +12,9 @@ class FileSelector : public QObject
     ~FileSelector();
     public slots:
     void select();
+    
+    signals:
+    void fileChanged(CsvReader* newFile);
 };
 
 #endif

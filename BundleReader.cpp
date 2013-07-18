@@ -8,6 +8,11 @@ BundleReader::BundleReader(CsvReader* in) {
 QString BundleReader::path() {
     return this->contentsDir->path();
 }
+void BundleReader::changeOrigin(CsvReader* new_origin) {
+    this->originFile = new_origin;
+    return;
+}
+
 
 void BundleReader::addFile(QFile* toAdd) {
     QFileInfo tmpInfo(toAdd->fileName());
@@ -22,12 +27,32 @@ void printLine(std::vector<std::string> in) {
     std::cout << std::endl;
 }
 
-void BundleReader::pack(QString destination) {
+QFile* BundleReader::getNamedFile(QString in) {
+    QDir bundleDir(this->path());
+    QStringList filters;
+    filters << in;
+
+    QFileInfoList matchingFiles = bundleDir.entryInfoList(filters);
+
+    if (matchingFiles.size() > 1 or matchingFiles.size() == 0) {
+        return NULL;
+    }
+    return new QFile(matchingFiles[0].filePath());
+}
+
+QFile* BundleReader::getFormatFile() {
+    return this->getNamedFile(QString("format.csv"));
+}
+QFile* BundleReader::getDataFile() {
+    return this->getNamedFile(QString("data.csv"));
+}
+
+void BundleReader::pack() {
     QDir bundleDir(this->path());
     QStringList filters;
     filters << "*.csv";
 
-    //originFile->deleteAll();
+    originFile->deleteAll();
     
     QFileInfoList containedFiles = bundleDir.entryInfoList(filters);
 

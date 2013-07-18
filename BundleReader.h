@@ -13,7 +13,11 @@ class BundleReader
     BundleReader(CsvReader* in);
     void extract();
     void addFile(QFile* toAdd);
-    void pack(QString destination);
+    void pack();
+    QFile* getFormatFile();
+    QFile* getDataFile();
+    QFile* getNamedFile(QString in);
+    void changeOrigin(CsvReader* new_origin);
     QString path();
 
     private:
