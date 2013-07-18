@@ -24,7 +24,27 @@ class MainWindow : public QWidget
     Q_OBJECT
 
     public:
-    explicit MainWindow(QWidget *parent = 0);
-    virtual ~MainWindow() {};
+    MainWindow(QWidget *parent = 0);
+    ~MainWindow() {};
+
+    private:
+    CsvReader* formatFile;
+    CsvReader* dataFile;
+    BundleReader* mainBundle;
+    QToolBar* mainToolBar;
+    FileSelector* mainSelector;
+    
+    MainTableModel myModel;
+    MainTable table;
+
+    QAction* openaction;
+    QAction* editaction;
+    QAction* deleteaction;
+    QAction* addaction;
+
+    QMenuBar menu;
+    VisibilityMenu* showhide;
+
+    QVBoxLayout* layout;
 };
 #endif
