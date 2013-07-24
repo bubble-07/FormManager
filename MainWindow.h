@@ -1,4 +1,4 @@
-#include <QWidget>
+#include <QFileDialog>
 #include <QSignalMapper>
 #include <QAction>
 #include <QVBoxLayout>
@@ -13,6 +13,8 @@
 #include "MainTable.h"
 #include "visibilityMenu.h"
 #include "addDialog.h"
+#include "BundleReader.h"
+#include "FileSelector.h"
 #include "EntryFields/NumberField.h"
 
 
@@ -26,6 +28,7 @@ class MainWindow : public QWidget
     public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow() {};
+    void init();
 
     private:
     CsvReader* formatFile;
@@ -34,8 +37,8 @@ class MainWindow : public QWidget
     QToolBar* mainToolBar;
     FileSelector* mainSelector;
     
-    MainTableModel myModel;
-    MainTable table;
+    MainTableModel* myModel;
+    MainTable* table;
 
     QAction* openaction;
     QAction* editaction;

@@ -3,6 +3,10 @@
 #include <QAction>
 #include <stdlib.h>
 #include "mainTable.h"
+
+#ifndef VISIBILITYMENU_DEFINED
+#define VISIBILITYMENU_DEFINED
+
 class VisibilityMenu : public QMenu
 {
     Q_OBJECT
@@ -23,3 +27,4 @@ class VisibilityMenu : public QMenu
     QSignalMapper* signalMapper;
     int menusize;
 };
+#endif

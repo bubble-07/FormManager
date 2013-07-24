@@ -25,10 +25,16 @@ std::vector<std::string> split(const std::string &s, char delim) {
     return elems;
 }
 
-QString CsvReader::get(int row, int column) {
+QString CsvReader::get(size_t row, size_t column) {
+    if (row > this->getNumRows()) {
+        return QString("");
+    }
+    if (column > this->parsedFile[row].size() - 1) {
+        return QString("");
+    }
     return QString(this->parsedFile[row][column].c_str());
 }
-void CsvReader::set(int row, int column, std::string val) {
+void CsvReader::set(size_t row, size_t column, std::string val) {
     this->parsedFile[row][column] = val;
 }
 
@@ -97,7 +103,7 @@ void CsvReader::addRow() {
     this->parsedFile.push_back(tmp);
     return;
 }
-void CsvReader::addToRow(int row, std::string val) {
+void CsvReader::addToRow(size_t row, std::string val) {
     this->parsedFile[row].push_back(val);
     return;
 }
@@ -105,8 +111,8 @@ void CsvReader::addRow(std::vector<std::string> init) {
     this->parsedFile.push_back(init);
     return;
 }
-void CsvReader::deleteRow(int row) {
-    if (row > -1 and row < parsedFile.size())
+void CsvReader::deleteRow(size_t row) {
+    if (row < parsedFile.size())
         this->parsedFile.erase(this->parsedFile.begin() + row); 
     return;
 }
@@ -116,8 +122,8 @@ void CsvReader::deleteAll() {
     }
     return;
 }
-void CsvReader::deleteRows(int begin, int end) {
-    if (begin > -1 and end < parsedFile.size())
+void CsvReader::deleteRows(size_t begin, size_t end) {
+    if (end < parsedFile.size())
         this->parsedFile.erase(this->parsedFile.begin() + begin,
                                this->parsedFile.begin() + end + 1); 
     return;
@@ -125,6 +131,6 @@ void CsvReader::deleteRows(int begin, int end) {
 size_t CsvReader::getNumRows() {
     return this->parsedFile.size();
 }
-std::vector<std::string> CsvReader::getRow(int row) {
+std::vector<std::string> CsvReader::getRow(size_t row) {
     return parsedFile[row];
 }

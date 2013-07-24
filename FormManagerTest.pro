@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     MainTableModel.cpp \
     MainTable.cpp \
     BundleReader.cpp \
-    FileSelector.cpp
+    FileSelector.cpp \
+    MainWindow.cpp
 
 HEADERS  += \
     visibilityMenu.h \
@@ -38,7 +39,8 @@ HEADERS  += \
     MainTableModel.h \
     MainTable.h \
     BundleReader.h \
-    FileSelector.h
+    FileSelector.h \
+    MainWindow.h
 
 RESOURCES += \
     Icons.qrc
