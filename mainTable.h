@@ -10,6 +10,7 @@ class MainTable : public QTableView
 
     public:
     MainTable(QWidget *parent, MainTableModel* model);
+    void changeModel(MainTableModel* model);
 
     private:
     MainTableModel* model;

@@ -10,6 +10,7 @@ class FileSelector : public QObject
     public:
     FileSelector(QObject* parent = 0);
     ~FileSelector();
+
     public slots:
     void select();
     

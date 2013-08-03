@@ -9,6 +9,14 @@ MainTable::MainTable(QWidget *parent, MainTableModel* model)
                      this->model, SLOT(editCell(const QModelIndex&)));
     return;
 }
+void MainTable::changeModel(MainTableModel* model) {
+    this->model = model;
+    this->setModel(model);
+     QObject::connect(this, SIGNAL(doubleClicked(const QModelIndex&)), 
+                     this->model, SLOT(editCell(const QModelIndex&)));
+    return;
+}
+    
 
 void MainTable::toggleHidden(int col)
 {

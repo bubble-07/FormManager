@@ -43,6 +43,8 @@ void MainWindow::init() {
     QObject::connect(openaction, SIGNAL(triggered()),
                      mainSelector, SLOT(select()));
 
+    QObject::connect(mainSelector, SIGNAL(fileChanged(CsvReader*)),
+                     this, SLOT(fileChanged(CsvReader*)));
 
 
     const QIcon peopleicon(":/icons/user");
@@ -106,3 +108,30 @@ void MainWindow::init() {
     //dialog->exec();
     //delete dialog;
 } 
+
+void MainWindow::fileChanged(CsvReader* newFile) {
+    //todo: properly dispose of the previous one
+    this->mainBundle = new BundleReader(newFile);
+    this->mainBundle->extract();
+    
+    QFile* tmpformatFile = this->mainBundle->getFormatFile();
+    tmpformatFile->open(QIODevice::ReadOnly);
+    this->formatFile = new CsvReader(tmpformatFile);
+
+    QFile* tmpdataFile = this->mainBundle->getDataFile();
+    tmpdataFile->open(QIODevice::ReadOnly);
+    this->dataFile = new CsvReader(tmpdataFile);
+
+    //To-do: free the old one more properly!
+    delete this->myModel;
+    this->myModel = new MainTableModel(0, formatFile, dataFile);
+
+    
+    this->table->changeModel(this->myModel);
+
+
+    this->showhide->changeFile(this->formatFile);
+    return;
+}
+
+

@@ -29,6 +29,29 @@ QObject::connect(this->signalMapper, SIGNAL(mapped(int)), this->table, SLOT(togg
     return;
 }
 
+void VisibilityMenu::changeFile(CsvReader* file) {
+    this->disconnect(this, 0, 0, 0); //note: this is dangerous
+    this->formatFile = file;
+    delete this->signalMapper;
+    
+    this->signalMapper = new QSignalMapper(0);
+
+    this->menusize = this->formatFile->getNumRows();
+    for (int i = 0; i < this->menusize; i++) {
+        this->options.push_back(this->addAction(this->formatFile->get(i, 0)));
+        this->options[i]->setCheckable(true);
+        this->options[i]->setChecked(true);
+        signalMapper->setMapping(this->options[i], i);
+    QObject::connect(this->options[i], SIGNAL(toggled(bool)), this->signalMapper, SLOT(map()));
+    }
+
+    
+QObject::connect(this->signalMapper, SIGNAL(mapped(int)), this->table, SLOT(toggleHidden(int)));
+    
+    return;
+}
+
+
 void VisibilityMenu::hideAll() {
     for (int i = 0; i < this->menusize; i++) {
         options[i]->setChecked(false);

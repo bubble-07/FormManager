@@ -13,6 +13,7 @@ class VisibilityMenu : public QMenu
 
     public:
     VisibilityMenu(QString name, CsvReader* file, MainTable* table);
+    void changeFile(CsvReader* file);
 
     public slots:
     void hideAll();

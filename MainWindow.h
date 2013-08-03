@@ -29,6 +29,9 @@ class MainWindow : public QWidget
     MainWindow(QWidget *parent = 0);
     ~MainWindow() {};
     void init();
+    
+    public slots:
+    void fileChanged(CsvReader* newFile);
 
     private:
     CsvReader* formatFile;
